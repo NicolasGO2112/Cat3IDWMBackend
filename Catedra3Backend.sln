@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catedra3Backend", "Catedra3Backend.csproj", "{3CF00C79-16BB-4A65-953D-6FEE2D4AADAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CF00C79-16BB-4A65-953D-6FEE2D4AADAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF00C79-16BB-4A65-953D-6FEE2D4AADAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF00C79-16BB-4A65-953D-6FEE2D4AADAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF00C79-16BB-4A65-953D-6FEE2D4AADAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E9142D1-610B-4C9F-ADA4-38633B597CC8}
+	EndGlobalSection
+EndGlobal
