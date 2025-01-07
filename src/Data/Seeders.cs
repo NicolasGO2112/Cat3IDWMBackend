@@ -25,7 +25,7 @@ namespace Catedra3Backend.src.Data
 
                     foreach (var user in users)
                     {
-                        var result = await userManager.CreateAsync(user, "P4ssw0rd123.");
+                        var result = await userManager.CreateAsync(user, "password1");
 
                         if (!result.Succeeded)
                         {

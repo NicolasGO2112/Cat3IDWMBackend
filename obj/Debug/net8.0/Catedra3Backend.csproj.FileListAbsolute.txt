@@ -132,3 +132,4 @@ C:\Users\nikol\Documents\Universidad\IntroDesarrolloWebMovil\Catedra3\Catedra3Ba
 C:\Users\nikol\Documents\Universidad\IntroDesarrolloWebMovil\Catedra3\Catedra3Backend\Catedra3Backend\bin\Debug\net8.0\Bogus.dll
 C:\Users\nikol\Documents\Universidad\IntroDesarrolloWebMovil\Catedra3\Catedra3Backend\Catedra3Backend\bin\Debug\net8.0\CloudinaryDotNet.dll
 C:\Users\nikol\Documents\Universidad\IntroDesarrolloWebMovil\Catedra3\Catedra3Backend\Catedra3Backend\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\nikol\Documents\Universidad\IntroDesarrolloWebMovil\Catedra3\Catedra3Backend\Catedra3Backend\obj\Debug\net8.0\Catedra3Backend.sourcelink.json

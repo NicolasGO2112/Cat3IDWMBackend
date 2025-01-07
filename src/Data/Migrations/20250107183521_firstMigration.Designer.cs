@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Catedra3Backend.src.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250107041520_firstMigration")]
+    [Migration("20250107183521_firstMigration")]
     partial class firstMigration
     {
         /// <inheritdoc />
