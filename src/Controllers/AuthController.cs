@@ -21,8 +21,17 @@ namespace Catedra3Backend.src.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
+            // Verifica si el modelo es válido
+            if (!ModelState.IsValid)
+            {    // Devuelve los errores de validación
+                return BadRequest(ModelState);
+            }
             try
             {
+                var existEmail = await _authRepository.ExistEmail(registerDto.Mail);
+                if(existEmail) { 
+                    return BadRequest(new {message ="El correo ingresado ya se encuentra asociado a una cuenta"});
+                }
                 var auth = await _authRepository.RegisterUserAsync(registerDto);
                 return Ok(auth);
             }
@@ -36,7 +45,11 @@ namespace Catedra3Backend.src.Controllers
         {
             try
             {
+
                 var auth = await _authRepository.LogginUserAsync(logginDto);
+                if(auth ==null){
+                    return Unauthorized(new {message = "El correo y/o la contaseña son incorrectos"});
+                }
                 return Ok(auth);
             }
             catch (Exception e)

@@ -26,11 +26,14 @@ namespace Catedra3Backend.src.Repositoy
         {
             if (uploadPostDto.Image == null)
             {
-                throw new Exception("Image is required");
+                return null;
             }
             if (uploadPostDto.Image.ContentType != "image/png" && uploadPostDto.Image.ContentType != "image/jpg")
             {
-                throw new Exception("Image must be a PNG or JPG");
+                return null;
+            }
+            if(uploadPostDto.Image.Length > 5 * 1024 * 1024){
+                return null;
             }
             // Realiza los párametros de subida de la imagen
             var uploadParams = new ImageUploadParams

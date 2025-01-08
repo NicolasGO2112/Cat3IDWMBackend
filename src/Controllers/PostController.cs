@@ -25,7 +25,9 @@ namespace Catedra3Backend.src.Controllers
         {
             try {
                 var newPost = await _postRepository.CreateNewPost(uploadPostDto);
-
+                if(newPost == null){
+                    return BadRequest( new {message = "Se debe subir una imagen en formato jpg o png y un tamaño no mayor a 5MB"});
+                }
                 var uri = Url.Action("GetPost", new { id = newPost!.PostId });
                 var response = new
                 {

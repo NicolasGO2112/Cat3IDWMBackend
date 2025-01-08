@@ -29,10 +29,10 @@ namespace Catedra3Backend.src.Repositoy
         {
             string normalizedEmail = logginDto.Mail.ToUpper();
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.NormalizedEmail == normalizedEmail);
-            if(user == null) throw new Exception("Invalid email ");
+            if(user == null) return null;
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, logginDto.Password, false);
-            if (!result.Succeeded) throw new Exception("Invalid password");
+            if (!result.Succeeded) return null;
 
             var newUser = await _tokenService.CreateToken(user);
             var auth = new AuthDto
@@ -44,11 +44,7 @@ namespace Catedra3Backend.src.Repositoy
             return auth;
         }
         public async Task<AuthDto> RegisterUserAsync(RegisterDto user)
-        {
-            bool exist = await _userManager.FindByEmailAsync(user.Mail) != null;
-            if(exist) throw new Exception("Email already exists");
-            // Crea un nuevo usuario
-            
+        {      
             User newUser = new User{
                 Email = user.Mail,
                 UserName = user.Mail // Puedes usar el correo como nombre de usuario
@@ -76,6 +72,13 @@ namespace Catedra3Backend.src.Repositoy
                 Token = registeredUser
             };
             return auth;
+        }
+    
+        public async Task<bool> ExistEmail(string email)
+        {
+            bool exist = await _userManager.FindByEmailAsync(email) != null;
+            return exist;
+
         }
     }
 }

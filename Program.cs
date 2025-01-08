@@ -59,6 +59,7 @@ builder.Services.AddAuthentication(
                       ValidateAudience = true,
                       ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE"),
                       ValidateIssuerSigningKey = true,
+                      ValidateLifetime = true, // Habilita la validación de tiempo de vida
                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SIGNINKEY") ?? throw new ArgumentNullException("JWT_SIGINKEY"))),
                     };
                     

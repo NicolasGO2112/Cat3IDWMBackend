@@ -10,5 +10,7 @@ namespace Catedra3Backend.src.interfaces
     {
         Task<AuthDto> RegisterUserAsync(RegisterDto user);
         Task<AuthDto> LogginUserAsync(LogginDto logginDto);
+        Task<bool> ExistEmail(string email);
+
     }
 }

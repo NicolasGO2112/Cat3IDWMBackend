@@ -9,6 +9,7 @@ namespace Catedra3Backend.src.Dtos.Auth
     public class RegisterDto
     {
         [Required]
+        [EmailAddress(ErrorMessage = "El correo electrónico no es válido.")]
         public string Mail {get;set;} = string.Empty;
         [Required]
         [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]
