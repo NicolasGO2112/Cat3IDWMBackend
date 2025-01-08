@@ -9,6 +9,6 @@ namespace Catedra3Backend.src.Dtos.Post
     {
         public string Title {get;set;} =string.Empty; 
         public DateTime publicationDate {get;set;}  
-        public string UrlImage {get;set;} =string.Empty; 
+        public string UrlImage {get;set;} = string.Empty;
     }
 }

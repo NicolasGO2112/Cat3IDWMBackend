@@ -28,11 +28,11 @@ namespace Catedra3Backend.src.Repositoy
         public async Task<AuthDto> LogginUserAsync(LogginDto logginDto)
         {
             string normalizedEmail = logginDto.Mail.ToUpper();
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.NormalizedUserName == normalizedEmail);
-            if(user == null) throw new Exception("Invalid email or password");
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.NormalizedEmail == normalizedEmail);
+            if(user == null) throw new Exception("Invalid email ");
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, logginDto.Password, false);
-            if (!result.Succeeded) throw new Exception("Invalid email or password");
+            if (!result.Succeeded) throw new Exception("Invalid password");
 
             var newUser = await _tokenService.CreateToken(user);
             var auth = new AuthDto
@@ -48,10 +48,14 @@ namespace Catedra3Backend.src.Repositoy
             bool exist = await _userManager.FindByEmailAsync(user.Mail) != null;
             if(exist) throw new Exception("Email already exists");
             // Crea un nuevo usuario
+            
             User newUser = new User{
-                Email = user.Mail
+                Email = user.Mail,
+                UserName = user.Mail // Puedes usar el correo como nombre de usuario
             };
             // Obtiene el resultado de la creación del usuario
+            Console.WriteLine("XXDXDXDDD");
+
             var result = await _userManager.CreateAsync(newUser, user.Password);
             // Si la creación fue exitosa
             if (result.Succeeded)

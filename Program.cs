@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 //cargamos las variables de entorno
 Env.Load();
@@ -38,7 +42,28 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
     
-
+builder.Services.AddAuthentication(
+                opt =>
+                {
+                    opt.DefaultAuthenticateScheme = 
+                    opt.DefaultChallengeScheme = 
+                    opt.DefaultForbidScheme =
+                    opt.DefaultScheme =
+                    opt.DefaultSignInScheme = 
+                    opt.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
+                }).AddJwtBearer(opt => {
+                    opt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                      ValidateIssuer = true,
+                      ValidIssuer = Environment.GetEnvironmentVariable("JWT_IUSSER"),
+                      ValidateAudience = true,
+                      ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE"),
+                      ValidateIssuerSigningKey = true,
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SIGNINKEY") ?? throw new ArgumentNullException("JWT_SIGINKEY"))),
+                    };
+                    
+                });
+        
 // Configurar Cloudinary
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 
@@ -118,8 +143,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("allowAll");
 
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
