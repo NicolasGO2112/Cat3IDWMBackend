@@ -24,7 +24,7 @@ namespace Catedra3Backend.src.Controllers
             // Verifica si el modelo es válido
             if (!ModelState.IsValid)
             {    // Devuelve los errores de validación
-                return BadRequest(ModelState);
+                return BadRequest("ModelState");
             }
             try
             {

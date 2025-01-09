@@ -28,7 +28,7 @@ namespace Catedra3Backend.src.Repositoy
             {
                 return null;
             }
-            if (uploadPostDto.Image.ContentType != "image/png" && uploadPostDto.Image.ContentType != "image/jpg")
+            if (uploadPostDto.Image.ContentType != "image/png" && uploadPostDto.Image.ContentType != "image/jpg"  && uploadPostDto.Image.ContentType != "image/jpeg" )
             {
                 return null;
             }

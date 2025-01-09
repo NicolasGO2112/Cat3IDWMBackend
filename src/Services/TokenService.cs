@@ -60,7 +60,8 @@ namespace Catedra3Backend.src.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
+                Expires = DateTime.UtcNow.AddMinutes(15), // Expira en 30 minutos
+                NotBefore = DateTime.UtcNow, // Es válido desde el momento actual
                 SigningCredentials = creds,
                 Issuer = _config["JWT_IUSSER"],
                 Audience = _config["JWT_AUDIENCE"]
